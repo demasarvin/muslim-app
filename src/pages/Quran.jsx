@@ -8,7 +8,6 @@ const QuranPage = () => {
   useEffect(() => {
     axios.get(`${baseURL}/quran/surah`).then((res) => {
       setListSurah(res.data.data);
-      // console.log(res.data.data)
     });
   }, []);
   return (

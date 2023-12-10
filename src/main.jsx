@@ -4,6 +4,7 @@ import "./index.css";
 import HomePage from "./pages/Home.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import QuranPage from "./pages/Quran.jsx";
+import DoaPage from "./pages/Doa.jsx";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/quran",
     element: <QuranPage />,
+  },
+  {
+    path: "/doa",
+    element: <DoaPage />,
   },
 ]);
 
