@@ -3,11 +3,16 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import HomePage from "./pages/Home.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import QuranPage from "./pages/Quran.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
+  },
+  {
+    path: "/quran",
+    element: <QuranPage />,
   },
 ]);
 
