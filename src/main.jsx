@@ -5,6 +5,7 @@ import HomePage from "./pages/Home.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import QuranPage from "./pages/Quran.jsx";
 import DoaPage from "./pages/Doa.jsx";
+import DzikirPage from "./pages/Dzikir.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/doa",
     element: <DoaPage />,
+  },
+  {
+    path: "/dzikir",
+    element: <DzikirPage />,
   },
 ]);
 
