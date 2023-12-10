@@ -17,8 +17,8 @@ const Navbar = () => {
       path: "/dzikir",
     },
     {
-      name: "Hadist",
-      path: "/hadist",
+      name: "Hadits",
+      path: "/hadits",
     },
   ];
   return (
@@ -40,7 +40,9 @@ const Navbar = () => {
                 {isMenuOpen ? (
                   <HiOutlineX className={`text-3xl hover:text-lime-300`} />
                 ) : (
-                  <HiOutlineMenuAlt3 className={`text-3xl hover:text-lime-300`} />
+                  <HiOutlineMenuAlt3
+                    className={`text-3xl hover:text-lime-300`}
+                  />
                 )}
               </button>
             </div>

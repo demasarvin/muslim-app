@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import QuranPage from "./pages/Quran.jsx";
 import DoaPage from "./pages/Doa.jsx";
 import DzikirPage from "./pages/Dzikir.jsx";
+import HaditsPage from "./pages/Hadits.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/dzikir",
     element: <DzikirPage />,
+  },
+  {
+    path: "/hadits",
+    element: <HaditsPage />,
   },
 ]);
 
