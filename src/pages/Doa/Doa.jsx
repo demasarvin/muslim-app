@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 const baseURL = "https://api.dikiotang.com";
