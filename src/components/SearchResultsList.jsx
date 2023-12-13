@@ -19,7 +19,7 @@ const SearchResultsList = ({ results, searchRef, type }) => {
       ) : (
         results.map((result, index) => (
           <CardItem
-            key={result.number}
+            key={result.number || index}
             data={result}
             type={type}
             index={index}
