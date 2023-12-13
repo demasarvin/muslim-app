@@ -51,12 +51,14 @@ const SearchBar = ({
           onChange={(e) => handleChange(e.target.value)}
           onFocus={() => setIsSearchVisible(true)}
         />
-        <div
-          onClick={handleClear}
-          className="absolute bottom-3 end-2.5 cursor-pointer text-lime-700"
-        >
-          <HiOutlineX className="h-4 w-4" />
-        </div>
+        {inputSearch && (
+          <div
+            onClick={handleClear}
+            className="absolute bottom-3 end-2.5 cursor-pointer text-lime-700"
+          >
+            <HiOutlineX className="h-4 w-4" />
+          </div>
+        )}
       </div>
     </form>
   );

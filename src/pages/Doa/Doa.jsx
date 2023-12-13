@@ -24,6 +24,15 @@ const DoaPage = () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
+
+  useEffect(() => {
+    if (isSearchVisible && !results.length) {
+      axios.get(`${baseURL}/doa`).then((res) => {
+        const searchData = res.data.data;
+        setResults(searchData);
+      });
+    }
+  }, [isSearchVisible, results]);
   const handleOutsideClick = (event) => {
     if (searchRef.current && !searchRef.current.contains(event.target)) {
       setIsSearchVisible(false);
