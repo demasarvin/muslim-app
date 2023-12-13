@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 
 const DzikirPage = () => {
   return (
@@ -22,7 +22,7 @@ const DzikirPage = () => {
             <p className="pt-2 text-lg">Dzikir Sore</p>
           </Link>
           <Link
-            to="/dzikir/shalat"
+            to="/dzikir/solat"
             className="rounded-lg bg-white p-6 hover:bg-lime-700 hover:text-white"
           >
             <span className="text-3xl">🕌</span>{" "}
