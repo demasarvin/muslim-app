@@ -9,7 +9,7 @@ function CardItem({ data, type, index }) {
       to={type === "surah" ? `ayah/surah/${data.number}` : `${index + 1}`}
       className="flex items-center rounded-lg bg-white p-4 hover:bg-lime-50"
     >
-      <div className="mr-4 flex h-10 w-10 items-center justify-center bg-[url('./assets/frame-number.svg')] bg-center bg-no-repeat font-semibold">
+      <div className="mr-4 flex flex-none h-10 w-10 items-center justify-center bg-[url('./assets/frame-number.svg')] bg-center bg-no-repeat font-semibold">
         {type === "surah" ? data.number : index + 1}
       </div>
       <ul className="text-left">
