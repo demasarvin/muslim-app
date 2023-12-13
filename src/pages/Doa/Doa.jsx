@@ -4,15 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import SearchBar from "../../components/SearchBar";
 import SearchResultsList from "../../components/SearchResultsList";
 import CardItem from "../../components/CardItem";
+import Loading from "../../components/Loading";
 const baseURL = "https://api.dikiotang.com";
 const DoaPage = () => {
   const [listDoa, setListDoa] = useState([]);
   const [results, setResults] = useState([]);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const searchRef = useRef(null);
   useEffect(() => {
     axios.get(`${baseURL}/doa`).then((res) => {
       setListDoa(res.data.data);
+      setIsLoading(false);
     });
     document.addEventListener("mousedown", handleOutsideClick);
 
@@ -54,12 +57,16 @@ const DoaPage = () => {
             <SearchResultsList results={results} searchRef={searchRef} />
           )}
         </div>
-        <div className="mt-5 grid gap-4 px-6 pb-5 text-center md:mt-10 md:grid-cols-3 md:pb-10">
-          {listDoa &&
-            listDoa.map((doa, index) => (
-              <CardItem key={index} data={doa} index={index} />
-            ))}
-        </div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="mt-5 grid gap-4 px-6 pb-5 text-center md:mt-10 md:grid-cols-3 md:pb-10">
+            {listDoa &&
+              listDoa.map((doa, index) => (
+                <CardItem key={index} data={doa} index={index} />
+              ))}
+          </div>
+        )}
       </div>
     </div>
   );

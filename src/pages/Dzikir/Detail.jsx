@@ -2,27 +2,28 @@ import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loading from "../../components/Loading";
 const baseURL = "https://api.dikiotang.com";
 
 const DetailDzikirPage = () => {
   const [listDzikir, setListDzikir] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   let { type } = useParams();
   useEffect(() => {
-    axios
-      .get(`${baseURL}/dzikir/${type}`)
-      .then((res) => {
-        setListDzikir(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axios.get(`${baseURL}/dzikir/${type}`).then((res) => {
+      setListDzikir(res.data.data);
+      setIsLoading(false);
+    });
   });
   return (
     <div className="min-h-screen bg-lime-100">
       <Navbar />
       <div className="container mx-auto">
-        <div className="mt-5 md:mt-10 pb-5">
-          {listDzikir &&
+        <div className="mt-5 pb-5 md:mt-10">
+          {isLoading ? (
+            <Loading />
+          ) : (
+            listDzikir &&
             listDzikir.map((dzikir, index) => (
               <div
                 key={index}
@@ -44,7 +45,8 @@ const DetailDzikirPage = () => {
                 <p className="mb-2 text-lg text-lime-700">{dzikir.indo}</p>
                 <p className="text-lg">{dzikir.text}</p>
               </div>
-            ))}
+            ))
+          )}
         </div>
       </div>
     </div>

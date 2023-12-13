@@ -4,16 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import SearchBar from "../../components/SearchBar";
 import SearchResultsList from "../../components/SearchResultsList";
 import CardItem from "../../components/CardItem";
+import Loading from "../../components/Loading";
 const baseURL = "https://api.dikiotang.com";
 const QuranPage = () => {
   const [listSurah, setListSurah] = useState(null);
   const [results, setResults] = useState([]);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const searchRef = useRef(null);
 
   useEffect(() => {
     axios.get(`${baseURL}/quran/surah`).then((res) => {
       setListSurah(res.data.data);
+      setIsLoading(false);
     });
     document.addEventListener("mousedown", handleOutsideClick);
 
@@ -60,12 +63,16 @@ const QuranPage = () => {
             />
           )}
         </div>
-        <div className="mt-5 grid gap-4 px-6 pb-5 text-center md:mt-10 md:grid-cols-3 md:pb-10">
-          {listSurah &&
-            listSurah.map((surah) => (
-              <CardItem key={surah.number} type="surah" data={surah} />
-            ))}
-        </div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="mt-5 grid gap-4 px-6 pb-5 text-center md:mt-10 md:grid-cols-3 md:pb-10">
+            {listSurah &&
+              listSurah.map((surah) => (
+                <CardItem key={surah.number} type="surah" data={surah} />
+              ))}
+          </div>
+        )}
       </div>
     </div>
   );

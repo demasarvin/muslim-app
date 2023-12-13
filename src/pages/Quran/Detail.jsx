@@ -2,23 +2,29 @@ import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Loading from "../../components/Loading";
 const baseURL = "https://api.dikiotang.com";
 
 const DetailQuranPage = () => {
   const [listAyah, setListAyah] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   let { id } = useParams();
 
   useEffect(() => {
     axios.get(`${baseURL}/quran/ayah/surah/${id}`).then((res) => {
       setListAyah(res.data.data);
+      setIsLoading(false);
     });
   });
   return (
     <div className="min-h-screen bg-lime-100">
       <Navbar />
       <div className="container mx-auto">
-        <div className="mt-5 md:mt-10">
-          {listAyah &&
+        <div className="mt-5 pb-5 md:mt-10">
+          {isLoading ? (
+            <Loading />
+          ) : (
+            listAyah &&
             listAyah.map((ayah) => (
               <div
                 key={ayah.id}
@@ -35,7 +41,8 @@ const DetailQuranPage = () => {
                 <p className="mb-2 text-lg text-lime-700">{ayah.latin}</p>
                 <p className="text-lg">{ayah.text}</p>
               </div>
-            ))}
+            ))
+          )}
         </div>
       </div>
     </div>
