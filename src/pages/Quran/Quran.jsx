@@ -1,41 +1,69 @@
-import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import SearchBar from "../../components/SearchBar";
+import SearchResultsList from "../../components/SearchResultsList";
+import CardItem from "../../components/CardItem";
 const baseURL = "https://api.dikiotang.com";
 const QuranPage = () => {
   const [listSurah, setListSurah] = useState(null);
+  const [results, setResults] = useState([]);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const searchRef = useRef(null);
+
   useEffect(() => {
     axios.get(`${baseURL}/quran/surah`).then((res) => {
       setListSurah(res.data.data);
     });
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
   }, []);
+
+  const handleOutsideClick = (event) => {
+    if (searchRef.current && !searchRef.current.contains(event.target)) {
+      setIsSearchVisible(false);
+    }
+  };
+
+  const handleSearch = (value) => {
+    setResults([]);
+    setIsSearchVisible(value.trim() !== "");
+  };
   return (
     <div className="min-h-screen bg-lime-100">
       <Navbar />
       <div className="container mx-auto">
+        <div className="mx-6 mt-10">
+          <SearchBar
+            placeholder={"Cari Surah..."}
+            setResults={setResults}
+            setIsSearchVisible={setIsSearchVisible}
+            onSearch={handleSearch}
+            apiUrl={`${baseURL}/quran/surah`}
+            customFilter={(data, value) => {
+              return data.filter(
+                (item) =>
+                  item &&
+                  item.name_id &&
+                  item.name_id.toLowerCase().includes(value.toLowerCase()),
+              );
+            }}
+          />
+          {isSearchVisible && (
+            <SearchResultsList
+              results={results}
+              searchRef={searchRef}
+              type="surah"
+            />
+          )}
+        </div>
         <div className="mt-5 grid gap-4 px-6 pb-5 text-center md:mt-10 md:grid-cols-3 md:pb-10">
           {listSurah &&
             listSurah.map((surah) => (
-              <Link
-                key={surah.number}
-                to={`ayah/surah/${surah.number}`}
-                className="flex items-center rounded-lg bg-white p-4 hover:bg-lime-50"
-              >
-                <div className="mr-4 flex h-10 w-10 items-center justify-center bg-[url('./assets/frame-number.svg')] bg-center bg-no-repeat font-semibold">
-                  {surah.number}
-                </div>
-                <ul className="text-left">
-                  <li className="flex items-center justify-start">
-                    <p className="text-sm font-bold">{surah.name_id}</p>
-                    <h1 className="ml-2 text-xs">({surah.translation_id})</h1>
-                  </li>
-                  <li className="text-xs">
-                    {surah.revelation_id} · {surah.number_of_verses} Ayat
-                  </li>
-                </ul>
-                <p className="ml-auto font-arab">{surah.name_short}</p>
-              </Link>
+              <CardItem key={surah.number} type="surah" data={surah} />
             ))}
         </div>
       </div>
