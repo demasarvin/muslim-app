@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 const baseURL = "https://api.dikiotang.com";
@@ -14,7 +14,7 @@ const QuranPage = () => {
     <div className="min-h-screen bg-lime-100">
       <Navbar />
       <div className="container mx-auto">
-        <div className="mt-5 pb-5 md:pb-10 grid gap-4 px-6 text-center md:mt-10 md:grid-cols-3">
+        <div className="mt-5 grid gap-4 px-6 pb-5 text-center md:mt-10 md:grid-cols-3 md:pb-10">
           {listSurah &&
             listSurah.map((surah) => (
               <Link
@@ -34,7 +34,7 @@ const QuranPage = () => {
                     {surah.revelation_id} · {surah.number_of_verses} Ayat
                   </li>
                 </ul>
-                <p className="font-arab ml-auto">{surah.name_short}</p>
+                <p className="ml-auto font-arab">{surah.name_short}</p>
               </Link>
             ))}
         </div>

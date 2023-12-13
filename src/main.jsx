@@ -3,10 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import HomePage from "./pages/Home.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import QuranPage from "./pages/Quran.jsx";
+import QuranPage from "./pages/Quran/Quran.jsx";
 import DoaPage from "./pages/Doa.jsx";
 import DzikirPage from "./pages/Dzikir.jsx";
 import HaditsPage from "./pages/Hadits.jsx";
+import DetailQuranPage from "./pages/Quran/Detail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/quran",
     element: <QuranPage />,
+  },
+  {
+    path: "/quran/ayah/surah/:id",
+    element: <DetailQuranPage />,
   },
   {
     path: "/doa",
