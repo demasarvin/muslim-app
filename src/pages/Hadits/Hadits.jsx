@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 const baseURL = "https://api.dikiotang.com";
 const HaditsPage = () => {
-    const [listHadits, setListHadits] = useState([]);
+  const [listHadits, setListHadits] = useState([]);
 
   useEffect(() => {
     axios.get(`${baseURL}/hadits`).then((res) => {
-        setListHadits(res.data.data);
+      setListHadits(res.data.data);
     });
   }, []);
-  console.log(listHadits)
+  
   return (
     <div className="min-h-screen bg-lime-100">
       <Navbar />
@@ -24,7 +24,7 @@ const HaditsPage = () => {
                 to={`${hadits.no}`}
                 className="flex items-center rounded-lg bg-white p-4 hover:bg-lime-50"
               >
-                <div className="mr-4 flex flex-none h-10 w-10 items-center justify-center bg-[url('./assets/frame-number.svg')] bg-center bg-no-repeat font-semibold">
+                <div className="mr-4 flex h-10 w-10 flex-none items-center justify-center bg-[url('./assets/frame-number.svg')] bg-center bg-no-repeat font-semibold">
                   {hadits.no}
                 </div>
                 <p className="text-left text-sm">{hadits.judul}</p>
@@ -34,5 +34,5 @@ const HaditsPage = () => {
       </div>
     </div>
   );
-}
-export default HaditsPage
+};
+export default HaditsPage;

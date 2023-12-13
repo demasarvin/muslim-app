@@ -6,10 +6,11 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import QuranPage from "./pages/Quran/Quran.jsx";
 import DoaPage from "./pages/Doa/Doa.jsx";
 import DzikirPage from "./pages/Dzikir/Dzikir.jsx";
-import HaditsPage from "./pages/Hadits.jsx";
+import HaditsPage from "./pages/Hadits/Hadits.jsx";
 import DetailQuranPage from "./pages/Quran/Detail.jsx";
 import DetailDoaPage from "./pages/Doa/Detail.jsx";
 import DetailDzikirPage from "./pages/Dzikir/Detail.jsx";
+import DetailHaditsPage from "./pages/Hadits/Detail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "/hadits",
     element: <HaditsPage />,
+  },
+  {
+    path: "/hadits/:id",
+    element: <DetailHaditsPage />,
   },
 ]);
 
