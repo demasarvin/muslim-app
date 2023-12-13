@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import SearchBar from "../../components/SearchBar";
 import SearchResultsList from "../../components/SearchResultsList";
 import Loading from "../../components/Loading";
+import Footer from "../../components/Footer";
 const baseURL = "https://api.dikiotang.com";
 const HaditsPage = () => {
   const [listHadits, setListHadits] = useState([]);
@@ -79,6 +80,7 @@ const HaditsPage = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

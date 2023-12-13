@@ -5,6 +5,7 @@ import SearchBar from "../../components/SearchBar";
 import SearchResultsList from "../../components/SearchResultsList";
 import CardItem from "../../components/CardItem";
 import Loading from "../../components/Loading";
+import Footer from "../../components/Footer";
 const baseURL = "https://api.dikiotang.com";
 const DoaPage = () => {
   const [listDoa, setListDoa] = useState([]);
@@ -68,6 +69,7 @@ const DoaPage = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

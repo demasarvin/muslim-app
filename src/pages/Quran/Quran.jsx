@@ -5,6 +5,7 @@ import SearchBar from "../../components/SearchBar";
 import SearchResultsList from "../../components/SearchResultsList";
 import CardItem from "../../components/CardItem";
 import Loading from "../../components/Loading";
+import Footer from "../../components/Footer";
 const baseURL = "https://api.dikiotang.com";
 const QuranPage = () => {
   const [listSurah, setListSurah] = useState(null);
@@ -74,6 +75,7 @@ const QuranPage = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

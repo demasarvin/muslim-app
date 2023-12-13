@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loading from "../../components/Loading";
+import Footer from "../../components/Footer";
 const baseURL = "https://api.dikiotang.com";
 
 const DetailQuranPage = () => {
@@ -45,6 +46,7 @@ const DetailQuranPage = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

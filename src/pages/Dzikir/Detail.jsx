@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "../../components/Loading";
+import Footer from "../../components/Footer";
 const baseURL = "https://api.dikiotang.com";
 
 const DetailDzikirPage = () => {
@@ -49,6 +50,7 @@ const DetailDzikirPage = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
+import Footer from "../../components/Footer";
 const baseURL = "https://api.dikiotang.com";
 
 const DetailDoaPage = () => {
@@ -41,6 +42,7 @@ const DetailDoaPage = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
