@@ -42,7 +42,6 @@ const QuranPage = () => {
   };
 
   const handleSearch = (value) => {
-    setResults([]);
     setIsSearchVisible(value.trim() !== "");
   };
   return (
