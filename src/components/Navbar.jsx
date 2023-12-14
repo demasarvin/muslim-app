@@ -36,6 +36,7 @@ const Navbar = () => {
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="block text-white"
+                aria-label="toggle menu"
               >
                 {isMenuOpen ? (
                   <HiOutlineX className={`text-3xl hover:text-lime-300`} />
